@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Free, 100% client-side Markdown resume builder. Live preview, print to PDF, export HTML. No tracking, no backend.">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; script-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Markdown Resume</title>
+  <link rel="stylesheet" href="styles/app.css">
+  <link rel="stylesheet" href="styles/resume.css">
+</head>
+<body>
+  <header class="toolbar no-print">
+    <h1 class="brand">Markdown&nbsp;Resume</h1>
+    <div class="actions">
+      <label class="field">Theme
+        <select id="theme">
+          <option value="classic">Classic</option>
+          <option value="modern">Modern</option>
+          <option value="compact">Compact</option>
+        </select>
+      </label>
+      <button id="load-sample" type="button">Load sample</button>
+      <label class="button" for="import-md">Open .md</label>
+      <input id="import-md" type="file" accept=".md,.markdown,.txt,text/markdown,text/plain" hidden>
+      <button id="export-md" type="button">Save .md</button>
+      <button id="export-html" type="button">Export HTML</button>
+      <button id="print" type="button" class="primary">Print / Save as PDF</button>
+    </div>
+  </header>
+
+  <main class="workspace">
+    <section class="pane editor-pane no-print" aria-label="Markdown editor">
+      <textarea id="editor" spellcheck="true" aria-label="Resume markdown"></textarea>
+      <p class="hint">Autosaves to this browser only. <span id="status" role="status"></span></p>
+    </section>
+    <section class="pane preview-pane" aria-label="Resume preview">
+      <article id="preview" class="resume theme-classic"></article>
+    </section>
+  </main>
+
+  <script type="module" src="src/app.js"></script>
+</body>
+</html>

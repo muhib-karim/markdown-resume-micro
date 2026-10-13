@@ -1,0 +1,26 @@
+{
+  "name": "markdown-resume-micro",
+  "version": "1.0.0",
+  "description": "Free, 100% client-side Markdown resume builder: live preview, print to PDF, export HTML. No tracking, no backend.",
+  "type": "module",
+  "private": true,
+  "license": "MIT",
+  "author": "Muhib Al Karim",
+  "homepage": "https://muhib-karim.github.io/markdown-resume-micro/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/muhib-karim/markdown-resume-micro.git"
+  },
+  "bin": {
+    "md-resume": "bin/md-resume.js"
+  },
+  "scripts": {
+    "check": "node --check src/markdown.js && node --check src/app.js && node --check src/sample.js && node --check bin/md-resume.js",
+    "test": "node --test",
+    "build": "node scripts/build-site.js",
+    "example": "node bin/md-resume.js examples/resume.md -o examples/resume.html"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
