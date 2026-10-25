@@ -146,6 +146,10 @@ CI (`.github/workflows/ci.yml`) runs the syntax check, tests and site build on N
 - Autosave is per-browser `localStorage`; clearing site data deletes it, so keep a `.md` copy with **Save .md**.
 - Possible next steps: more themes, a two-column layout, page-break hints.
 
+## Contributing
+
+Issues and pull requests are welcome. Before opening a pull request, run `npm test`. Please keep each pull request focused and say how you tested it.
+
 ## License
 
 [MIT](LICENSE) © 2026 Muhib Al Karim
