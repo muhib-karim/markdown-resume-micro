@@ -21,7 +21,7 @@ body {
 .brand { font-size: 1.1rem; margin: 0; letter-spacing: 0.02em; }
 .actions { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; }
 .field { display: flex; gap: 0.4rem; align-items: center; font-size: 0.9rem; }
-button, .button, select {
+button, select {
   font: inherit;
   font-size: 0.9rem;
   padding: 0.35rem 0.75rem;
@@ -31,13 +31,18 @@ button, .button, select {
   color: #f5f7fa;
   cursor: pointer;
 }
-button:hover, .button:hover { background: #33405c; }
-button:focus-visible, .button:focus-within, select:focus-visible, textarea:focus-visible {
+button:hover { background: #33405c; }
+button:focus-visible, select:focus-visible {
   outline: 2px solid #5fa8ff;
   outline-offset: 2px;
 }
-button.primary { background: #2f6fed; border-color: #2f6fed; }
-button.primary:hover { background: #255fd0; }
+/* On the light panes the ring is darker and drawn inside the box, because the panes clip overflow. */
+.editor-pane textarea:focus-visible, .preview-pane:focus-visible {
+  outline: 2px solid #1d4ed8;
+  outline-offset: -2px;
+}
+button.primary { background: #255fd0; border-color: #255fd0; }
+button.primary:hover { background: #1f52b5; }
 .workspace {
   flex: 1;
   display: grid;
@@ -46,7 +51,8 @@ button.primary:hover { background: #255fd0; }
 }
 .pane { min-height: 0; overflow: auto; }
 .editor-pane { display: flex; flex-direction: column; border-right: 1px solid #d3d9e2; background: #fff; }
-#editor {
+/* Selected by element, not by #editor: resume headings get ids too ("## Editor" -> id="editor"). */
+.editor-pane textarea {
   flex: 1;
   width: 100%;
   border: 0;

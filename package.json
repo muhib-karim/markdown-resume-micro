@@ -15,8 +15,10 @@
     "md-resume": "bin/md-resume.js"
   },
   "scripts": {
-    "check": "node --check src/markdown.js && node --check src/app.js && node --check src/sample.js && node --check bin/md-resume.js",
+    "lint": "node scripts/lint.js",
+    "check": "node scripts/lint.js",
     "test": "node --test",
+    "test:coverage": "node --test --experimental-test-coverage --test-coverage-exclude=\"test/**\" --test-coverage-lines=95 --test-coverage-branches=90 --test-coverage-functions=90",
     "build": "node scripts/build-site.js",
     "example": "node bin/md-resume.js examples/resume.md -o examples/resume.html"
   },

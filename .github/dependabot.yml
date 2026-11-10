@@ -1,0 +1,8 @@
+# The project has no package dependencies; this only keeps the SHA-pinned
+# GitHub Actions in .github/workflows up to date.
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
