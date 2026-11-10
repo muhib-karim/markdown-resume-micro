@@ -33,6 +33,13 @@ body > article.resume { padding: 16mm; }
 .resume h2, .resume h3 { break-after: avoid; page-break-after: avoid; }
 .resume li { break-inside: avoid; page-break-inside: avoid; }
 
+/* Standalone export (Export HTML / CLI): print with the same margins as the in-app print. */
+body.resume-export { margin: 0; }
+@media print {
+  @page { margin: 14mm; }
+  body > article.resume { padding: 0; max-width: none; }
+}
+
 /* Modern: accent colour, centred header */
 .theme-modern h1 { color: #1e3a8a; text-align: center; }
 .theme-modern h1 + p { text-align: center; }
