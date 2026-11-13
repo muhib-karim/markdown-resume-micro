@@ -1,5 +1,5 @@
 // Zero-dependency lint: syntax of every JS file, text hygiene and project invariants.
-// Usage: node scripts/lint.js [repoRoot]   (works on Node >= 18)
+// Usage: node scripts/lint.js [repoRoot]   (works on Node >= 22.8)
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { spawnSync } from 'node:child_process';
 import { basename, dirname, extname, join, relative, resolve, sep } from 'node:path';

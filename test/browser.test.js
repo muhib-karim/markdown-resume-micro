@@ -1,6 +1,6 @@
 // End-to-end checks of the real page in headless Chrome/Chromium, using only Node built-ins
-// (http server + DevTools protocol over the global WebSocket). Skipped when Node < 22 or no
-// browser is installed; set REQUIRE_BROWSER=1 to turn that skip into a failure (CI does).
+// (http server + DevTools protocol over the global WebSocket). Skipped when no browser is
+// installed; set REQUIRE_BROWSER=1 to turn that skip into a failure (CI does).
 import { test, before, after } from 'node:test';
 import assert from 'node:assert/strict';
 import { spawn, spawnSync } from 'node:child_process';
@@ -29,11 +29,11 @@ function findBrowser() {
   ].filter(Boolean);
   return candidates.find((bin) => spawnSync(bin, ['--version'], { stdio: 'ignore' }).status === 0);
 }
-const browserPath = typeof WebSocket === 'function' ? findBrowser() : undefined;
-const skip = browserPath ? false : 'needs Node >= 22 and Chrome/Chromium (set CHROME_BIN)';
+const browserPath = findBrowser();
+const skip = browserPath ? false : 'needs Chrome/Chromium (set CHROME_BIN)';
 
 test('a browser is available when REQUIRE_BROWSER is set', { skip: !process.env.REQUIRE_BROWSER }, () => {
-  assert.ok(browserPath, 'REQUIRE_BROWSER is set but no usable browser / WebSocket was found');
+  assert.ok(browserPath, 'REQUIRE_BROWSER is set but no usable browser was found');
 });
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));

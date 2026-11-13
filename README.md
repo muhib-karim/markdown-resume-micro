@@ -72,7 +72,7 @@ Systems Engineer · Toronto, ON\
 
 The first `#` heading becomes the page title and the download filename (e.g. `jane-doe.html`).
 
-### CLI (Node.js 18+)
+### CLI (Node.js 22.8+)
 
 ```bash
 node bin/md-resume.js --help
@@ -118,7 +118,7 @@ flowchart LR
 ```bash
 npm run lint            # node --check on every JS file + text hygiene + project rules
 npm test                # node --test: renderer, CLI, storage, site and browser suites
-npm run test:coverage   # the same suites with a coverage gate (needs Node 22+)
+npm run test:coverage   # the same suites with a coverage gate (needs Node 22.8+)
 npm run build           # assemble the static site into _site/
 ```
 
@@ -126,11 +126,11 @@ npm run build           # assemble the static site into _site/
 
 The tests use Node's built-in `node:test` runner — no packages to install. They cover inline formatting, block parsing, nested lists, XSS cases (script tags, `javascript:` / `data:` URLs, attribute break-out), inputs that used to freeze or overflow the renderer, CRLF and byte-order-mark input, title/filename extraction, the standalone HTML wrapper, the storage wrapper and the CLI (`--help`, argument errors, exit codes, running through a symlinked `bin`, file and stdout output). `test/site.test.js` checks that `index.html`, `src/app.js` and the Pages build agree with each other.
 
-`test/browser.test.js` drives the real page in headless Chrome or Chromium — keyboard access, contrast, autosave, import, export and print — using only Node built-ins. It needs Node 22+ and a Chrome/Chromium binary (set `CHROME_BIN` if it is not on your `PATH`) and skips itself otherwise. Set `REQUIRE_BROWSER=1` to turn a missing browser into a failure, as CI does.
+`test/browser.test.js` drives the real page in headless Chrome or Chromium — keyboard access, contrast, autosave, import, export and print — using only Node built-ins. It needs Node 22.8+ and a Chrome/Chromium binary (set `CHROME_BIN` if it is not on your `PATH`) and skips itself otherwise. Set `REQUIRE_BROWSER=1` to turn a missing browser into a failure, as CI does.
 
 `scripts/lint.js` syntax-checks every JavaScript file, rejects CRLF, tabs, trailing whitespace and invisible control characters, and enforces three project rules: no dependencies, GitHub Actions pinned to commit SHAs, and no broken relative links in this README.
 
-CI (`.github/workflows/ci.yml`) runs the lint, the tests and the site build on Node 18, 20, 22, 24 and 26; on Node 22 and newer it also enforces the coverage gate (95 % lines, 90 % branches, 90 % functions) and requires the browser tests to run. `.github/workflows/pages.yml` runs the same checks and then deploys `_site/` to GitHub Pages on pushes to `main`. Actions are pinned to commit SHAs and kept current by Dependabot.
+CI (`.github/workflows/ci.yml`) runs the lint, the tests and the site build on Node 22, 24 and 26, including the coverage gate (95 % lines, 90 % branches, 90 % functions) and the browser tests. `.github/workflows/pages.yml` runs the same checks and then deploys `_site/` to GitHub Pages on pushes to `main`. Actions are pinned to commit SHAs and kept current by Dependabot.
 
 ## Project structure
 

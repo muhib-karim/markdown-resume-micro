@@ -30,13 +30,13 @@ function setStatus(message) {
 function render() {
   try {
     preview.innerHTML = markdownToHtml(editor.value);
+    document.title = `${extractTitle(editor.value)} · Markdown Resume`;
   } catch (err) {
     // One document the renderer cannot handle must not take the whole UI down.
     preview.textContent = 'This document could not be rendered.';
     setStatus(`Preview failed: ${err.message}`);
   }
   preview.className = `resume theme-${themeSelect.value}`;
-  document.title = `${extractTitle(editor.value)} · Markdown Resume`;
 }
 
 let saveTimer;
