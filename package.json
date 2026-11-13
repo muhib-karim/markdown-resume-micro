@@ -23,6 +23,6 @@
     "example": "node bin/md-resume.js examples/resume.md -o examples/resume.html"
   },
   "engines": {
-    "node": ">=18"
+    "node": ">=22.8"
   }
 }

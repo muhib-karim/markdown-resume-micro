@@ -7,9 +7,8 @@ no dependencies at all — so this guide is short.
 
 There is nothing to install.
 
-- **Node.js 18 or newer** runs the lint, the unit tests, the CLI and the site build.
-- **Node.js 22 or newer plus Chrome or Chromium** additionally runs the coverage gate and the
-  headless-browser tests.
+- **Node.js 22.8 or newer** runs the lint, the unit tests, the CLI and the site build.
+- **Chrome or Chromium** additionally runs the headless-browser tests.
 - To use the app locally, serve the repository root with any static file server, for example
   `python3 -m http.server 8000`, and open <http://localhost:8000>.
 
@@ -18,15 +17,14 @@ There is nothing to install.
 ```bash
 npm run lint            # syntax of every JS file, text hygiene, project rules
 npm test                # all test suites
-npm run test:coverage   # Node 22+: the same suites with the coverage gate
+npm run test:coverage   # the same suites with the coverage gate
 npm run build           # assembles _site/
 ```
 
-CI runs these on Node 18, 20, 22, 24 and 26; the coverage gate and the browser tests apply on
-Node 22 and newer.
+CI runs these on Node 22, 24 and 26, including the coverage gate and the browser tests.
 
-The browser tests in `test/browser.test.js` skip themselves when Node is older than 22 or no
-Chrome/Chromium binary is found. Point `CHROME_BIN` at a binary that is not on your `PATH`, and
+The browser tests in `test/browser.test.js` skip themselves when no Chrome/Chromium binary is
+found. Point `CHROME_BIN` at a binary that is not on your `PATH`, and
 set `REQUIRE_BROWSER=1` if you want a missing browser to fail the run instead of skipping it.
 
 ## Ground rules
